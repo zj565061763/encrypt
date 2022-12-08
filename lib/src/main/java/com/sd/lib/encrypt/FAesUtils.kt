@@ -4,7 +4,7 @@ import android.util.Base64
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
 
-private val DefaultTransform = "AES/ECB/PKCS5Padding"
+private const val DefaultTransform = "AES/ECB/PKCS5Padding"
 
 /**
  * 加密
