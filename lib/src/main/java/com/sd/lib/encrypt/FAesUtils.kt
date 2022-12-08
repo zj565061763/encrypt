@@ -9,30 +9,30 @@ private const val DefaultTransform = "AES/ECB/PKCS5Padding"
 /**
  * 加密
  */
-fun fAesEncrypt(input: String, key: String, transform: String = DefaultTransform): String {
+fun fAesEncrypt(input: String, key: String, transform: String = DefaultTransform): String? {
     return try {
         val bytes = input.toByteArray()
         fAesEncrypt(bytes, key, transform)?.let {
             String(it, Charsets.US_ASCII)
-        } ?: ""
+        }
     } catch (e: Exception) {
         e.printStackTrace()
-        ""
+        null
     }
 }
 
 /**
  * 解密
  */
-fun fAesDecrypt(input: String, key: String, transform: String = DefaultTransform): String {
+fun fAesDecrypt(input: String, key: String, transform: String = DefaultTransform): String? {
     return try {
         val bytes = input.toByteArray()
         fAesDecrypt(bytes, key, transform)?.let {
             String(it)
-        } ?: ""
+        }
     } catch (e: Exception) {
         e.printStackTrace()
-        ""
+        null
     }
 }
 

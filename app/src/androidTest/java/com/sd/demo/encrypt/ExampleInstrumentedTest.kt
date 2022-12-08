@@ -18,10 +18,7 @@ class ExampleInstrumentedTest {
     fun testAes() {
         val key = "1234567891234567"
         val content = "content"
-        val contentEncrypt = fAesEncrypt(content, key)
-
-        fAesDecrypt(contentEncrypt, key).let {
-            Assert.assertEquals(content, it)
-        }
+        val contentEncrypt = fAesEncrypt(content, key)!!
+        Assert.assertEquals(content, fAesDecrypt(contentEncrypt, key))
     }
 }
