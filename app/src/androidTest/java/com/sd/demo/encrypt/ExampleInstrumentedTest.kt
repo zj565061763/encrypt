@@ -3,6 +3,7 @@ package com.sd.demo.encrypt
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.sd.lib.encrypt.fAesDecrypt
 import com.sd.lib.encrypt.fAesEncrypt
+import com.sd.lib.encrypt.fMd5
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,5 +21,11 @@ class ExampleInstrumentedTest {
         val content = "content"
         val contentEncrypt = fAesEncrypt(content, key)!!
         Assert.assertEquals(content, fAesDecrypt(contentEncrypt, key))
+    }
+
+    @Test
+    fun testMd5() {
+        val md5 = fMd5("hello world!")
+        Assert.assertEquals("FC3FF98E8C6A0D3087D515C0473F8677", md5)
     }
 }
