@@ -68,6 +68,18 @@ fun fAesEncrypt(
 /**
  * 解密
  */
+@Throws(
+    /** [transform]参数错误 */
+    NoSuchAlgorithmException::class,
+    /** [transform]参数错误 */
+    NoSuchPaddingException::class,
+    /** [key]参数错误 */
+    InvalidKeyException::class,
+    /** 解密失败 */
+    IllegalBlockSizeException::class,
+    /** 解密失败 */
+    BadPaddingException::class,
+)
 fun fAesDecrypt(
     input: String,
     key: String,
@@ -84,6 +96,18 @@ fun fAesDecrypt(
 /**
  * 解密
  */
+@Throws(
+    /** [transform]参数错误 */
+    NoSuchAlgorithmException::class,
+    /** [transform]参数错误 */
+    NoSuchPaddingException::class,
+    /** [key]参数错误 */
+    InvalidKeyException::class,
+    /** 解密失败 */
+    IllegalBlockSizeException::class,
+    /** 解密失败 */
+    BadPaddingException::class,
+)
 fun fAesDecrypt(
     input: ByteArray,
     key: String,
