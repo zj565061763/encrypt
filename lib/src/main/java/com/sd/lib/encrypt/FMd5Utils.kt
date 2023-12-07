@@ -1,23 +1,18 @@
 package com.sd.lib.encrypt
 
 import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
-fun fMd5(input: String): String? {
-    return try {
-        fMd5(input.toByteArray())
-    } catch (e: Exception) {
-        e.printStackTrace()
-        null
-    }
+@Throws(NoSuchAlgorithmException::class)
+fun fMd5(input: String): String {
+    return fMd5(input.toByteArray())
 }
 
-fun fMd5(input: ByteArray): String? {
-    return try {
-        MessageDigest.getInstance("MD5").digest(input).let {
-            it.joinToString("") { "%02X".format(it) }
+@Throws(NoSuchAlgorithmException::class)
+fun fMd5(input: ByteArray): String {
+    return MessageDigest.getInstance("MD5")
+        .digest(input)
+        .let { bytes ->
+            bytes.joinToString("") { "%02X".format(it) }
         }
-    } catch (e: Exception) {
-        e.printStackTrace()
-        null
-    }
 }
