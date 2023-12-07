@@ -84,14 +84,15 @@ fun fAesDecrypt(input: String, key: String, transform: String = DefaultTransform
 /**
  * 解密
  */
-fun fAesDecrypt(input: ByteArray, key: String, transform: String = DefaultTransform): ByteArray? {
-    return try {
-        val secretKeySpec = SecretKeySpec(key.toByteArray(), "AES")
-        Cipher.getInstance(transform).apply {
-            this.init(Cipher.DECRYPT_MODE, secretKeySpec)
-        }.doFinal(Base64.decode(input, Base64.DEFAULT))
-    } catch (e: Exception) {
-        e.printStackTrace()
-        null
+fun fAesDecrypt(
+    input: ByteArray,
+    key: String,
+    transform: String = DefaultTransform,
+): ByteArray? {
+    return Cipher.getInstance(transform).apply {
+        this.init(Cipher.DECRYPT_MODE, SecretKeySpec(key.toByteArray(), "AES"))
+    }.let {
+        val decode = Base64.decode(input, Base64.DEFAULT)
+        it.doFinal(decode)
     }
 }
