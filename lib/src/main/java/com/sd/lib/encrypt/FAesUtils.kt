@@ -68,16 +68,16 @@ fun fAesEncrypt(
 /**
  * 解密
  */
-fun fAesDecrypt(input: String, key: String, transform: String = DefaultTransform): String? {
-    return try {
-        val bytes = input.toByteArray()
-        fAesDecrypt(bytes, key, transform)?.let {
-            String(it)
-        }
-    } catch (e: Exception) {
-        e.printStackTrace()
-        null
-    }
+fun fAesDecrypt(
+    input: String,
+    key: String,
+    transform: String = DefaultTransform,
+): String {
+    return fAesDecrypt(
+        input = input.toByteArray(),
+        key = key,
+        transform = transform,
+    ).decodeToString()
 }
 
 
@@ -88,7 +88,7 @@ fun fAesDecrypt(
     input: ByteArray,
     key: String,
     transform: String = DefaultTransform,
-): ByteArray? {
+): ByteArray {
     return Cipher.getInstance(transform).apply {
         this.init(Cipher.DECRYPT_MODE, SecretKeySpec(key.toByteArray(), "AES"))
     }.let {
