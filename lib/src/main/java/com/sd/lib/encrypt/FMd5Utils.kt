@@ -4,13 +4,13 @@ import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
 @Throws(NoSuchAlgorithmException::class)
-fun String.fMd5(): String {
-    return this.toByteArray().fMd5()
+fun fMd5(input: String): String {
+    return fMd5(input.toByteArray())
 }
 
 @Throws(NoSuchAlgorithmException::class)
-fun ByteArray.fMd5(): String {
-    val md5Bytes = MessageDigest.getInstance("MD5").digest(this)
+fun fMd5(input: ByteArray): String {
+    val md5Bytes = MessageDigest.getInstance("MD5").digest(input)
     return buildString {
         for (byte in md5Bytes) {
             val hex = Integer.toHexString(0xff and byte.toInt())
