@@ -10,18 +10,9 @@ fun String.fMd5(): String {
 
 @Throws(NoSuchAlgorithmException::class)
 fun ByteArray.fMd5(): String {
-    return this.fMd5Bytes().hexString()
-}
-
-@Throws(NoSuchAlgorithmException::class)
-private fun ByteArray.fMd5Bytes(): ByteArray {
-    return MessageDigest.getInstance("MD5").digest(this)
-}
-
-private fun ByteArray.hexString(): String {
-    val bytes = this
+    val md5Bytes = MessageDigest.getInstance("MD5").digest(this)
     return buildString {
-        for (byte in bytes) {
+        for (byte in md5Bytes) {
             val hex = Integer.toHexString(0xff and byte.toInt())
             if (hex.length == 1) append("0")
             append(hex)
