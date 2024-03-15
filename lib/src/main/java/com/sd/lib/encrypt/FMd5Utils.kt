@@ -23,7 +23,7 @@ private fun ByteArray.hexString(): String {
     return buildString {
         for (byte in bytes) {
             val hex = Integer.toHexString(0xff and byte.toInt())
-            if (hex.length == 1) append('0')
+            if (hex.length == 1) append("0")
             append(hex)
         }
     }
