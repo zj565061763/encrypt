@@ -13,7 +13,7 @@ fun fMd5(input: ByteArray): String {
    val md5Bytes = MessageDigest.getInstance("MD5").digest(input)
    return buildString {
       for (byte in md5Bytes) {
-         val hex = Integer.toHexString(0xff and byte.toInt())
+         val hex = (0xff and byte.toInt()).toString(16)
          if (hex.length == 1) append("0")
          append(hex)
       }
