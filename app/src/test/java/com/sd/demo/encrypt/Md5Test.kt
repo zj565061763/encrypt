@@ -10,10 +10,10 @@ import org.junit.Test
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class Md5Test {
-    @Test
-    fun test() {
-        val input = "123"
-        val result = "202cb962ac59075b964b07152d234b70"
-        assertEquals(result, fMd5(input))
-    }
+   @Test
+   fun test() {
+      val input = "123"
+      val result = "202cb962ac59075b964b07152d234b70"
+      assertEquals(result, fMd5(input))
+   }
 }
